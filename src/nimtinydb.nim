@@ -16,7 +16,6 @@ import typetraits
 import options, jsony
 import icecream
 import pathutils
-import strutils
 
 export options, jsony, json, pathutils
 
