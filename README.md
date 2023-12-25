@@ -3,7 +3,7 @@
 `nimble install nimtinydb`
 
 ## Overview
-nimtinydb is a loose port of the TinyDB Python library (https://tinydb.readthedocs.io/en/latest)
+nimtinydb is a loose port of the TinyDB Python library (https://tinydb.readthedocs.io/en/latest).
 It is a lightweight, file-based JSON database designed for simplicity and ease of use, ideal for small projects and quick mockups.
 
 ## Quick Links
@@ -27,7 +27,27 @@ To use Nim TinyDB, first install the package using Nimble and then import it int
 
 ### Examples
 
-For detailed examples, refer to the `examples` directory in the repository.
+```
+import nimtinydb
+
+# Create a new TinyDB instance
+# If the database file does not exist, it will be created
+let song_db = newTinyDB("path/to/song_db.json")
+
+# Insert a new song into the database
+proc insertSong(songData: JsonNode): tuple[ok: bool, err: string, doc_id: Option[int]] =
+  song_db.insert(songData)
+
+# Retrieve a song by its ID
+proc getSong(songId: string): tuple[ok: bool, err: string, song: Option[JsonNode]] =
+  let query = Where("id") == %songId
+  let result = song_db.search(query)
+  if result.ok and result.vals.isSome():
+    return (true, "", some(result.vals.get[0].item))
+  else:
+    return (false, "Song not found", none(JsonNode))
+```
+
 
 ## Testing
 
