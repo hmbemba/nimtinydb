@@ -27,7 +27,7 @@ To use Nim TinyDB, first install the package using Nimble and then import it int
 
 ### Examples
 
-```
+```nim
 import nimtinydb
 
 # Create a new TinyDB instance
