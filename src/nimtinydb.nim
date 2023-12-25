@@ -50,22 +50,22 @@ type
       substring_query
 
     compound_query_types = enum
-      and_query,
-      or_query,
+      and_query          ,
+      or_query           ,
     
-    basic_query     = object 
-      field         : string
-      query_type    : basic_query_types
-      value         : JsonNode
+    basic_query        = object 
+      field            : string
+      query_type       : basic_query_types
+      value            : JsonNode
 
     compound_query     = object 
       queries          : seq[basic_query]
       compound_queries : seq[compound_query]
       query_type       : compound_query_types
 
-    queryField = distinct string
+    queryField         = distinct string
     
-    doc_id =  int
+    doc_id             =  int
 
 
 
